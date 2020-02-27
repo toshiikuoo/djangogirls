@@ -6,10 +6,13 @@ from .forms import PostForm
 from django.shortcuts import redirect
 
 def post_list(request):
+    # データの並び替え
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    # テンプレートにデータを渡す
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
+    # pkはプライマリーキーの略。データベースの各レコードに自動的に振られる。
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 

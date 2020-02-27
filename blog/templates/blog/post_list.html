@@ -5,6 +5,7 @@
       <div>
           <p>published: {{ post.published_date }}</p>
           <h2><a href="{% url 'post_detail' pk=post.pk  %}">{{ post.title }}</a></h2>
+          <!-- linebreaksbrはテキスト中の改行を段落に変換するという意味 -->
           <p>{{ post.text|linebreaksbr }}</p>
       </div>
   {% endfor %}
